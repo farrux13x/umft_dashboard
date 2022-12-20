@@ -1,0 +1,36 @@
+$main:   #485696;
+$dblue:  #373B53;
+$yellow: #FDAF0A;
+$green:  #022726;
+$green:  #1ea767;
+$grey:   #EDEDF6;
+$black:  #6D6D6D;
+$blue:   #023AAE;
+$red:     rgb(209, 38, 38);
+$br: 10px;
+
+
+$liberty: #485696;
+$salmon: #dd9787;
+$viridian: #558b6e;
+$bittersweet: #ff6b6b;
+$cambridge: #aec3b0;
+$royal: #745296;
+@mixin fb($w) {
+    flex-basis: $w;
+    width: $w;
+    max-width: $w;
+    padding: 0px 10px;
+}
+
+@mixin bg {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+@mixin  center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

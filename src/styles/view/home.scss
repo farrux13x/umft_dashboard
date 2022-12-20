@@ -1,0 +1,96 @@
+@import '../var.scss';
+.home {
+    &__faculty{
+        font-size: 12px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        &.green {
+            .el-icon {
+                color: $green;
+            }
+            color: $green;
+        }
+        &.yellow {
+            color: $yellow;
+        }
+        &.red {
+            .el-icon {
+                color: $red;
+            }
+            color: $red;
+        }
+    }
+    &__ball {
+        font-size: 18px;
+        font-weight: 700;
+        margin-right: 10px;
+    }
+    &__res {
+        background-color: #fff;
+        border-radius: 15px;
+        margin-top: 20px;
+        padding: 20px;
+        .el-image{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        img {
+            width: 50px;
+            aspect-ratio: 1/1;
+            object-fit: contain;
+            height: auto;
+        }
+        .label {
+            font-size: 18px;
+            font-weight: 700;
+        }
+    }
+    &__stat{
+        &box {
+            padding-left: 10px;
+        }
+        &item{
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 45px;
+            display: flex;
+            align-items: center;
+            .val {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            .label {
+                font-size: 14px;
+            }
+            &.liberty {
+                background-color: $liberty;
+                color: #fff;
+                box-shadow: 0 10px 20px 11px rgba($liberty,0.2);
+            }
+            &.salmon {
+                background-color: $salmon;
+                color: #fff;
+                box-shadow: 0 10px 20px 11px rgba($salmon,0.2);
+            }
+            &.viridian {
+                background-color: $viridian;
+                color: #fff;
+                box-shadow: 0 10px 20px 11px rgba($viridian,0.2);
+            }
+            &.bittersweet {
+                background-color: $bittersweet;
+                color: #fff;
+                box-shadow: 0 10px 20px 11px rgba($bittersweet,0.2);
+            }
+            &.royal {
+                background-color: $royal;
+                color: #fff;
+                box-shadow: 0 10px 20px 11px rgba($royal,0.2);
+            }
+        }
+    }
+}

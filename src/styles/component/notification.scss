@@ -1,0 +1,47 @@
+@import '../var.scss';
+.notif{
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    max-width: 300px;
+    border-radius: 5px;
+    margin: auto;
+    top: -1000px;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    transition: 0.3s;
+    &.success {
+        background-color: $green;
+        top: 50px;
+    }
+    &.error {
+        background-color: $red;
+        top: 50px;
+    }
+    &:before {
+        content: '';
+        width: 0;
+        height: 3px;
+        background-color: #fff;
+        opacity: 0.6;
+        display: inline-block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation-name:linenotif;
+        animation-duration: 3s;
+        animation-delay: 0.5s;
+    }
+}
+
+@keyframes linenotif {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}

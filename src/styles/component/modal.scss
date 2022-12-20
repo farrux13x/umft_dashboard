@@ -1,0 +1,78 @@
+@import '../var.scss';
+
+.modal {
+    position: fixed;
+    right: -500px;
+    margin: auto;
+    top: 0px;
+    transition: 0.3s;
+    overflow: hidden;
+    background-color: #fff;
+    height: 100vh;
+    max-width: 500px;
+    padding: 50px 30px 30px;
+    width: 500px;
+    &__msg {
+        font-size: 16px;
+        font-family: 'gotham-b';
+        margin-bottom: 15px;
+        margin-top: -10px;
+        &.success {
+            color: $green;
+        }
+        &.danger {
+            color: $red;
+        }
+    }
+    &__title {
+        font-size: 24px;
+        font-family: 'gotham-b';
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+    &__close {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: $red;
+        color: #fff;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        &:hover {
+            background-color: darken($red,10%);
+        }
+        &:after,
+        &:before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background-color: #fff;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+            transform: rotate(45deg);
+        }
+        &:after {
+            transform: rotate(-45deg);
+        }
+    }
+    &.active {
+        right: 0;
+        overflow: auto;
+    }
+    &.lg {
+        max-width: 800px;
+    }
+    &.full{
+        max-width: unset;
+    }
+}
