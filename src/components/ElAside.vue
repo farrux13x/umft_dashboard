@@ -18,25 +18,25 @@
                 </el-icon>
                 Bosh sahifa
             </router-link>
-            <router-link to="/schedule/all">
+            <router-link to="/department">
                 <el-icon>
                     <calendar />
                 </el-icon>
                 Yo'nalishlar
             </router-link>
-            <router-link to="/department">
+            <router-link to="/">
                 <el-icon>
                     <grid />
                 </el-icon>
                 Sahifalar
             </router-link>
-            <router-link to="/subject">
+            <router-link to="/">
                 <el-icon>
                     <document />
                 </el-icon>
                 Savol javob
             </router-link>
-            <router-link to="/group">
+            <router-link to="/">
                 <el-icon>
                     <user-filled />
                 </el-icon>
@@ -48,7 +48,7 @@
                 <el-icon><ChatSquare /></el-icon>
                 Xabarlar
             </router-link>
-            <router-link to="/schedule/all">
+            <router-link to="/">
                 <el-icon><Histogram /></el-icon>
                 Jadval
             </router-link>

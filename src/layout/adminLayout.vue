@@ -7,7 +7,7 @@
             <el-header>
                 <ElHeader />
             </el-header>
-            <el-main id="main" v-loading="loading">
+            <el-main id="main" > <!-- v-loading="loading" -->
                 <router-view />
             </el-main>
         </section>
