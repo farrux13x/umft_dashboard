@@ -1,31 +1,30 @@
 <template>
     <el-row justify="space-between" class="mb-20">
         <h1>Yo'nalishlar</h1>
-        <el-button type="primary" @click="dialogVisible = true, form={desc:'',advice: '',poster:'',text:''}">
+        <el-button type="primary" @click="clear()">
             <el-icon>
                 <Plus />
             </el-icon>
             Yangi yo'nalish qo'shish
         </el-button>
     </el-row>
-    <el-dialog v-model="dialogVisible" title="Yangi yo'nalish" width="100%">
-        <el-form :model="form">
-
+    <el-dialog v-model="dialogVisible"  title="Yangi yo'nalish" width="100%">
+        <el-form :model="form" ref="validate">
             <el-row :gutter="20">
                 <el-col :span="12">
                     <el-row :gutter="20">
                         <el-col :span="24">
-                            <el-form-item label="Nomlanishi">
+                            <el-form-item prop="title" :rules="rules" label="Nomlanishi" >
                                 <el-input v-model="name" placeholder="Nomlanishi" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="24">
-                            <el-form-item label="Slogan url">
+                            <el-form-item prop="slogan" :rules="rules" label="Slogan url">
                                 <el-input v-model="form.slogan" placeholder="slogan" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="24">
-                            <el-form-item label="Yillik kontrakt narhi (mln)">
+                            <el-form-item label="Yillik kontrakt narhi (mln)" prop="slogan" :rules="rules" >
                                 <el-upload
                                 ref="upload"
                                     v-model:file-list="img"
@@ -48,13 +47,13 @@
                         <!-- <pre>{{ form.poster.raw }}</pre> -->
                         <!-- <pre>{{ img}}</pre> -->
                         <el-col :span="24">
-                            <el-form-item label="Yillik kontrakt narhi (mln)">
+                            <el-form-item label="Yillik kontrakt narhi (mln)" prop="price" :rules="rules" >
                                 <el-input-number controls-position="right" v-model="form.price" />
                                 
                             </el-form-item>
                         </el-col>
                         <el-col :span="24">
-                            <el-form-item label="Yo'nalish turi">
+                            <el-form-item prop="kind" :rules="rules"  label="Yo'nalish turi">
                                 <el-select v-model="form.kind" placeholder="Yo'nalish turi">
                                     <el-option label="kunduzgi" value="0" />
                                     <el-option label="sirtqi" value="1" />
@@ -64,19 +63,19 @@
                     </el-row>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item label="Qisqa matn">
+                    <el-form-item label="Qisqa matn" prop="desc" :rules="rules" >
                         <quill-editor ref="quillEditor" toolbar="full" contentType="html" v-model:content="form.desc">
                         </quill-editor>
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item label="Asosiy ta'lim imkoniyatlari">
+                    <el-form-item label="Asosiy ta'lim imkoniyatlari" prop="advice" :rules="rules" >
                         <quill-editor ref="quillEditor" toolbar="full" contentType="html" v-model:content="form.advice">
                         </quill-editor>
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item label="Matni">
+                    <el-form-item label="Matni" prop="text" :rules="rules" >
                         <quill-editor ref="quillEditor" toolbar="full" contentType="html" v-model:content="form.text">
                         </quill-editor>
                     </el-form-item>
@@ -97,7 +96,7 @@
     </el-dialog>
     <el-table :data="allDepartment.direction" height="481">
             <el-table-column label="№" prop="index" />
-            <el-table-column label="Rasm" prop="poster">
+            <el-table-column label="Rasm" >
                 <template #default="scope">
                     <img class="table__img" :src="`${url}/${scope.row.poster}`" alt="">
                     <!-- {{format(scope.row.poster)}} -->
@@ -138,6 +137,7 @@
                 toggle: false,
                 name:'',
                 img:[],
+                rules: [{ required: true, message: 'Maydonni to`ldiring', trigger: ['blur', 'change']}],
                 form: {
                     title: '',
                     slogan: '',
@@ -173,6 +173,17 @@
                 'editDirection',
                 'saveDirection'
             ]),
+            clear(){
+                this.dialogVisible = true, 
+                this.toggle = !this.toggle
+                this.form={}
+                this.form.desc='', 
+                this.form.advice= '', 
+                this.form.poster='', 
+                this.form.kind='', 
+                this.form.slogan='', 
+                this.form.text=''
+            },
             handleRemove(file){
                 this.del(file)
             },
@@ -180,8 +191,6 @@
                 this.editDirection(id)
                 .then(res =>{
                     this.form = res.data
-                    console.log(res.data)
-                    // this.img = res.data.response
                     this.dialogVisible = true
                     this.toggle = true
                 })
@@ -199,19 +208,26 @@
                 this.form = {}
             },
             add() {
-                if(this.img.length>0){
-                    this.form.poster = this.img[0].response
-                    this.dialogVisible = false
-                    console.log(this.img)
-                    this.department(this.form)
-                }
+                this.$refs['validate'].validate((valid) => {
+                    if (valid) {
+                        console.log(this.img)
+                        if(this.img.length>0){
+                            this.form.poster = this.img[0].response
+                            this.dialogVisible = false
+                            console.log(this.img)
+                            this.department(this.form)
+                        }
+                    }
+                    this.dialogVisible = true
+                    return false;
+                });
+
             }
         },
         watch:{
             name(val){
-                // console.log(val)
                 this.form.title = val
-                this.form.slogan = val.split(' ').join('-')
+                this.form.slogan = val.split(' ').join('-').toLowerCase()
             }
         },
         mounted(){
@@ -274,6 +290,14 @@
         padding: 8px 0;
     }
     .el-dialog__footer {
-        margin-top: 130px;
+        margin-top: 110px;
+    }
+    .el-form-item__error {
+        top: 209px;
+    }
+    .el-col-12:first-child {
+        .el-form-item__error {
+                top: 100%;
+        }
     }
 </style>

@@ -36,13 +36,6 @@ const department = {
                 console.log(res.data);
             })
         },
-        img(context,payload){
-            axios.post(`${context.getters.url}/direction/poster`,payload)
-            .then(res =>{
-                context.dispatch('allDepartments')
-                console.log(res.data);
-            })
-        },
         editDirection(context,payload){
             // return context.dispatch('getAxios',`direction/get/${payload}`)
             return axios.get(`${context.getters.url}/direction/get/${payload}`)

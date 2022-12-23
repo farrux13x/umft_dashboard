@@ -1,6 +1,8 @@
 import { createStore } from 'vuex'
 
 import department from './modules/department'
+import page from './modules/page'
+import questions from './modules/questions'
 
 export default createStore({
   state: {
@@ -16,6 +18,8 @@ export default createStore({
   actions: {
   },
   modules: {
-    department
+    department,
+    page,
+    questions
   }
 })

@@ -24,13 +24,13 @@
                 </el-icon>
                 Yo'nalishlar
             </router-link>
-            <router-link to="/">
+            <router-link to="/page">
                 <el-icon>
                     <grid />
                 </el-icon>
                 Sahifalar
             </router-link>
-            <router-link to="/">
+            <router-link to="/questions">
                 <el-icon>
                     <document />
                 </el-icon>
