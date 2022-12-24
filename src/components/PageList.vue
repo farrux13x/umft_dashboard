@@ -197,7 +197,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .ql-toolbar.ql-snow {
         width: 100%;
     }

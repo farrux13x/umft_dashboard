@@ -36,7 +36,13 @@
                 </el-icon>
                 Savol javob
             </router-link>
-            <router-link to="/">
+            <router-link to="/support">
+                <el-icon>
+                    <document />
+                </el-icon>
+                Murojatlar
+            </router-link>
+            <router-link to="/setting">
                 <el-icon>
                     <user-filled />
                 </el-icon>

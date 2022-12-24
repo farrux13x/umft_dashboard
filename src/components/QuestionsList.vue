@@ -38,7 +38,6 @@
     <el-table :data="allFaq.faq" height="481">
             <el-table-column label="№" prop="index" />
             <el-table-column label="Savol" prop="question" />
-            <el-table-column label="Holati" prop="status" />
             <el-table-column label="Holati" >
                 <template #default="scope">
                     <el-tag >{{scope.row.status}}</el-tag>
@@ -132,7 +131,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .wrapper .el-table .el-button {
         width: unset;
     }

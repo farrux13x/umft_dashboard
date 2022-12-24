@@ -5,7 +5,7 @@
             <el-icon>
                 <Plus />
             </el-icon>
-            Yangi yo'nalish qo'shish
+            Yo'nalish qo'shish
         </el-button>
     </el-row>
     <el-dialog v-model="dialogVisible"  title="Yangi yo'nalish" width="100%">
@@ -236,7 +236,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .ql-toolbar.ql-snow {
         width: 100%;
     }
