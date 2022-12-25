@@ -131,7 +131,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .wrapper .el-table .el-button {
         width: unset;
     }
@@ -148,7 +148,16 @@
     .el-form-item {
         position: relative;
     }
+    .el-dialog {
+        margin: 20px auto;
+    }
     .el-form-item__content {
         margin-bottom: 15px;
+    }
+    .el-col-24 {
+        margin-bottom: 0;
+    }
+    .el-dialog__footer {
+        margin-top: unset;
     }
 </style>

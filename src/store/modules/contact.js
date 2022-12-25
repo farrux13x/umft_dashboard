@@ -24,7 +24,7 @@ const contact = {
         allContacts(context){
             axios.get(`${context.getters.url}/contact`)
             .then(res =>{
-                    console.log(res.data)
+                    // console.log(res.data)
                     context.commit('contacts', res.data)
             })
         },

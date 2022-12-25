@@ -108,6 +108,7 @@ export default {
         clear(){
             this.dialogVisible = true
             this.toggle = true
+            this.form = {}
         }
     },
     mounted(){
@@ -119,5 +120,11 @@ export default {
 <style lang="scss">
     .wrapper .el-table .el-button {
         width: unset;
+    }
+    .el-dialog {
+        margin: 80px auto;
+    }
+    .el-dialog__footer {
+        margin-top: unset;
     }
 </style>

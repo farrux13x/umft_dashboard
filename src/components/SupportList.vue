@@ -1,4 +1,7 @@
 <template>
+    <el-row class="mb-20">
+        <h1>Murojatlar</h1>
+    </el-row>
     <el-table :data="contacts.contact" height="481">
         <el-table-column label="№" prop="index" />
         <el-table-column label="Savol" prop="name" />
@@ -62,6 +65,12 @@ export default {
         display: flex;
         justify-content: center;
     }
+}
+.el-dialog {
+    margin: 25px auto;
+}
+.el-dialog__footer {
+    margin-top: unset;
 }
 .wrapper .el-table .el-button{
     width: unset;

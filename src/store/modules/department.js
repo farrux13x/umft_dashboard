@@ -33,19 +33,18 @@ const department = {
             axios.post(`${context.getters.url}/direction`,payload)
             .then(res =>{
                 context.dispatch('allDepartments')
-                console.log(res.data);
+                console.log(res.status);
             })
         },
         editDirection(context,payload){
-            // return context.dispatch('getAxios',`direction/get/${payload}`)
             return axios.get(`${context.getters.url}/direction/get/${payload}`)
         },
         saveDirection(context,payload){
             axios.post(`${context.getters.url}/direction/save`,payload)
             .then(res =>{
                 if(res.status === 200){
-                    console.log(res.data);
-                context.dispatch('allDepartments')
+                    // console.log(res.data);
+                    context.dispatch('allDepartments')
 
                 }
             })
@@ -53,7 +52,7 @@ const department = {
         delDepartment(context,payload){
             axios.delete(`${context.getters.url}/direction/delete/${payload}`)
             .then(res =>{
-                console.log(res.data)
+                console.log(res.status)
                 context.commit('delDepartment',payload)
             })
         },
@@ -61,7 +60,7 @@ const department = {
             axios.get(`${context.getters.url}/direction`)
             .then(res =>{
                 context.commit('allDepartment',res.data)
-                console.log(res.data)
+                // console.log(res.data)
             })
         },
         del(context,payload){

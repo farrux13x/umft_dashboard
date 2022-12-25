@@ -197,7 +197,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .ql-toolbar.ql-snow {
         width: 100%;
     }
@@ -207,7 +207,9 @@
     .ql-toolbar.ql-snow+.ql-container.ql-snow {
         width: 100%;
     }
-
+    .el-dialog {
+        margin: 20px auto;
+    }
     .custom-file-input::-webkit-file-upload-button {
         display: none;
     }
@@ -251,6 +253,9 @@
     }
     .el-upload-list {
         margin: 0;
+    }
+    .el-dialog__footer {
+        margin-top: unset;
     }
     .el-col-24:last-child {
         margin-bottom: 0;

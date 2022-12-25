@@ -8,6 +8,36 @@
             Yo'nalish qo'shish
         </el-button>
     </el-row>
+    <el-table :data="allDepartment.direction" >
+        <el-table-column label="№" prop="index" />
+        <el-table-column label="Rasm" >
+            <template #default="scope">
+                <img class="table__img" :src="`${url}/${scope.row.poster}`" alt="">
+                <!-- {{format(scope.row.poster)}} -->
+            </template>
+        </el-table-column>
+        <el-table-column label="Yo'nalish nomi" prop="title" />
+        <el-table-column label="URI" prop="slogan" />
+        <el-table-column label="Yillik kontrakt" prop="price" />
+        <el-table-column label="O'qish turi" prop="kind" />
+        <el-table-column align="right">
+            <template #default="scope">
+                <el-button size="small" @click="handleEdit(scope.row._id)"
+                    >
+                    <el-icon><Edit /></el-icon>
+                </el-button
+                >
+                <el-button
+                    size="small"
+                    type="danger"
+                    @click="handleDelete(scope.row._id)"
+                    >
+                    <el-icon><Delete /></el-icon>
+                </el-button
+                >
+            </template>
+        </el-table-column>
+    </el-table>
     <el-dialog v-model="dialogVisible"  title="Yangi yo'nalish" width="100%">
         <el-form :model="form" ref="validate">
             <el-row :gutter="20">
@@ -75,7 +105,7 @@
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
-                    <el-form-item label="Matni" prop="text" :rules="rules" >
+                    <el-form-item label="Matni" >
                         <quill-editor ref="quillEditor" toolbar="full" contentType="html" v-model:content="form.text">
                         </quill-editor>
                     </el-form-item>
@@ -94,36 +124,6 @@
             </span>
         </template>
     </el-dialog>
-    <el-table :data="allDepartment.direction" height="481">
-            <el-table-column label="№" prop="index" />
-            <el-table-column label="Rasm" >
-                <template #default="scope">
-                    <img class="table__img" :src="`${url}/${scope.row.poster}`" alt="">
-                    <!-- {{format(scope.row.poster)}} -->
-                </template>
-            </el-table-column>
-            <el-table-column label="Yo'nalish nomi" prop="title" />
-            <el-table-column label="URI" prop="slogan" />
-            <el-table-column label="Yillik kontrakt" prop="price" />
-            <el-table-column label="O'qish turi" prop="kind" />
-            <el-table-column align="right">
-                <template #default="scope">
-                    <el-button size="small" @click="handleEdit(scope.row._id)"
-                        >
-                        <el-icon><Edit /></el-icon>
-                    </el-button
-                    >
-                    <el-button
-                        size="small"
-                        type="danger"
-                        @click="handleDelete(scope.row._id)"
-                        >
-                        <el-icon><Delete /></el-icon>
-                    </el-button
-                    >
-                </template>
-            </el-table-column>
-        </el-table>
 </template>
 
 <script>
@@ -175,7 +175,7 @@
             ]),
             clear(){
                 this.dialogVisible = true, 
-                this.toggle = !this.toggle
+                this.toggle = false
                 this.form={}
                 this.form.desc='', 
                 this.form.advice= '', 
@@ -190,7 +190,11 @@
             handleEdit(id){
                 this.editDirection(id)
                 .then(res =>{
+                    console.log(res.data)
                     this.form = res.data
+                    this.name = res.data.title
+                    // this.img = res.data.poster
+                    this.form.kind = res.data.kind == '0' ? 'kunduzgi' : 'sirtqi'
                     this.dialogVisible = true
                     this.toggle = true
                 })
@@ -203,23 +207,31 @@
                 this.delDepartment(id)
             },
             change(){
-                this.saveDirection(this.form)
-                this.dialogVisible = false
-                this.form = {}
+                this.$refs['validate'].validate((valid) => {
+                    if (valid) {
+                        if(this.img.length>0){
+                            this.form.poster = this.img[0].response
+                            this.dialogVisible = false
+                            this.saveDirection(this.form)
+                        }
+                    }else{
+                        this.dialogVisible = true
+                        return false;
+                    }
+                });
             },
             add() {
                 this.$refs['validate'].validate((valid) => {
                     if (valid) {
-                        console.log(this.img)
                         if(this.img.length>0){
                             this.form.poster = this.img[0].response
                             this.dialogVisible = false
-                            console.log(this.img)
                             this.department(this.form)
                         }
+                    }else{
+                        this.dialogVisible = true
+                        return false;
                     }
-                    this.dialogVisible = true
-                    return false;
                 });
 
             }
@@ -236,68 +248,8 @@
     }
 </script>
 
-<style lang="scss" scoped>
-    .ql-toolbar.ql-snow {
-        width: 100%;
-    }
-    .wrapper .el-table .el-button {
-        width: unset;
-    }
-    .ql-toolbar.ql-snow+.ql-container.ql-snow {
-        width: 100%;
-    }
-
-    .custom-file-input::-webkit-file-upload-button {
-        display: none;
-    }
+<style lang="scss">
     .el-dialog {
         margin:0;
-    }
-    .custom-file-input::before {
-        content: 'Select some files';
-        display: inline-block;
-        border: 1px solid #606266;
-        border-radius: 3px;
-        color: #606266;
-        padding: 5px 8px;
-        white-space: nowrap;
-        cursor: pointer;
-    }
-    .el-form-item__label {
-        position: absolute;
-        top: -28px;
-        left: 0;
-    }
-    .table__img{
-        width: 100px;
-        height: 100px;
-        object-fit: contain;
-    }
-    .el-form-item {
-        position: relative;
-    }
-    .el-form-item__content {
-        margin-bottom: 15px;
-    }
-    // .el-table--fit{
-    //     .el-table__body-wrapper{
-    //     }
-    // }
-    .el-table .el-table__cell {
-        padding: 0;
-    }
-    .el-table th.el-table__cell.is-leaf {
-        padding: 8px 0;
-    }
-    .el-dialog__footer {
-        margin-top: 110px;
-    }
-    .el-form-item__error {
-        top: 209px;
-    }
-    .el-col-12:first-child {
-        .el-form-item__error {
-                top: 100%;
-        }
     }
 </style>
