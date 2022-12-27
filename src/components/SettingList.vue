@@ -118,13 +118,16 @@ export default {
 
 </script>
 <style lang="scss">
-    .wrapper .el-table .el-button {
-        width: unset;
-    }
-    .el-dialog {
-        margin: 80px auto;
-    }
-    .el-dialog__footer {
-        margin-top: unset;
-    }
+    // .wrapper .el-table .el-button {
+    //     width: unset;
+    // }
+    // .el-dialog {
+    //     margin: 80px auto;
+    // }
+    // .el-dialog__footer {
+    //     margin-top: unset;
+    // }
+    // .el-table .el-table__cell {
+    //     padding: 8px 0;
+    // }
 </style>

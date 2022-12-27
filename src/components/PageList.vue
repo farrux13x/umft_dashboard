@@ -8,7 +8,7 @@
             Yangi sahifa qo'shish
         </el-button>
     </el-row>
-    <el-dialog v-model="dialogVisible"  title="Yangi yo'nalish" width="70%">
+    <el-dialog class="pag" v-model="dialogVisible"  title="Yangi yo'nalish" width="70%">
         <el-form :model="form" ref="validate">
             <el-row :gutter="20">
                 <el-col :span="12">
@@ -21,7 +21,7 @@
                         <el-input v-model="form.slug" placeholder="slogan" />
                     </el-form-item>
                 </el-col>
-                <el-col :span="24">
+                <el-col class="quil" :span="24">
                     <el-form-item label="Matni" prop="text" :rules="rules" >
                         <quill-editor ref="quillEditor" toolbar="full" contentType="html" v-model:content="form.text">
                         </quill-editor>
@@ -154,6 +154,7 @@
                 this.editPage(id)
                 .then(res =>{
                     this.form = res.data
+                    this.form.type = res.data.type == 'simple' ? 'Oddiy sahifa' : res.data.type == 'faq__list' ? 'FAQ style' : 'Qabul style'
                     this.dialogVisible = true
                     this.toggle = true
                 })
@@ -197,70 +198,33 @@
     }
 </script>
 
-<style lang="scss">
-    .ql-toolbar.ql-snow {
-        width: 100%;
-    }
-    .wrapper .el-table .el-button {
-        width: unset;
-    }
-    .ql-toolbar.ql-snow+.ql-container.ql-snow {
-        width: 100%;
-    }
-    .el-dialog {
-        margin: 20px auto;
-    }
-    .custom-file-input::-webkit-file-upload-button {
-        display: none;
-    }
-    .custom-file-input::before {
-        content: 'Select some files';
-        display: inline-block;
-        border: 1px solid #606266;
-        border-radius: 3px;
-        color: #606266;
-        padding: 5px 8px;
-        white-space: nowrap;
-        cursor: pointer;
-    }
-    .el-form-item__label {
-        position: absolute;
-        top: -28px;
-        left: 0;
-    }
-    .table__img{
-        width: 100px;
-        height: 100px;
-        object-fit: contain;
-    }
-    .el-form-item {
-        position: relative;
-    }
-    .el-form-item__content {
-        margin-bottom: 15px;
-    }
-    .el-table .el-table__cell {
-        padding: 0;
-    }
-    .el-table th.el-table__cell.is-leaf {
-        padding: 8px 0;
-    }
-    .el-col-24 {
-        margin-bottom: 115px;
-        .el-form-item__error {
-            top: 230px;
-        }
-    }
+<style lang="scss" >
+    // .el-dialog {
+    //     margin: 20px auto;
+    // }
+    // .custom-file-input::-webkit-file-upload-button {
+    //     display: none;
+    // }
+    // .el-col-24 {
+    //     margin-bottom: 115px;
+    //     .el-form-item__error {
+    //         top: 230px;
+    //     }
+    // }
+    // .el-upload-list {
+    //     margin: 0;
+    // }
+    // .el-dialog__footer {
+    //     margin-top: unset;
+    // }
+    // .el-col-24:last-child {
+    //     margin-bottom: 0;
+    //     .el-form-item__error {
+    //         top: 34px;
+    //     }
+    // }
     .el-upload-list {
+        width: 50%;
         margin: 0;
-    }
-    .el-dialog__footer {
-        margin-top: unset;
-    }
-    .el-col-24:last-child {
-        margin-bottom: 0;
-        .el-form-item__error {
-            top: 34px;
-        }
     }
 </style>

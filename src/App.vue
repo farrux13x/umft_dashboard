@@ -16,22 +16,19 @@ export default{
 @import './styles/grid.scss';
 @import './styles/main.scss';
 @import './styles/lib/class.scss';
-
-.ql-toolbar.ql-snow {
+    .ql-toolbar.ql-snow {
+        width: 100%;
+    }
+    .ql-toolbar.ql-snow+.ql-container.ql-snow {
         width: 100%;
     }
     .wrapper .el-table .el-button {
         width: unset;
     }
-    .ql-toolbar.ql-snow+.ql-container.ql-snow {
-        width: 100%;
-    }
     .custom-file-input::-webkit-file-upload-button {
         display: none;
     }
-    .el-dialog {
-        margin:0 auto;
-    }
+
     .custom-file-input::before {
         content: 'Select some files';
         display: inline-block;
@@ -58,15 +55,23 @@ export default{
     .el-form-item__content {
         margin-bottom: 15px;
     }
-    .el-table .el-table__cell {
-        padding: 0;
-    }
     .el-table th.el-table__cell.is-leaf {
         padding: 8px 0;
     }
-    .el-dialog__footer {
-        margin-top: 110px;
+    .ques.el-dialog {
+        margin:0 auto;
     }
+    .pag.el-dialog {
+        margin: 20px auto;
+    }
+    .ques{
+        .el-dialog__footer {
+            margin-top: 110px;
+        }
+    }
+    .quil.el-col-24 {
+            margin-bottom: 99px;
+        }
     .el-form-item__error {
         top: 209px;
     }

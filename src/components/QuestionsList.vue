@@ -132,32 +132,30 @@
 </script>
 
 <style lang="scss">
-    .wrapper .el-table .el-button {
-        width: unset;
-    }
-    .el-form-item__label {
-        position: absolute;
-        top: -28px;
-        left: 0;
-    }
-    .table__img{
-        width: 100px;
-        height: 100px;
-        object-fit: contain;
-    }
-    .el-form-item {
-        position: relative;
-    }
-    .el-dialog {
-        margin: 20px auto;
-    }
-    .el-form-item__content {
-        margin-bottom: 15px;
-    }
-    .el-col-24 {
-        margin-bottom: 0;
-    }
-    .el-dialog__footer {
-        margin-top: unset;
-    }
+    // .wrapper .el-table .el-button {
+    //     width: unset;
+    // }
+    // .el-form-item__label {
+    //     position: absolute;
+    //     top: -28px;
+    //     left: 0;
+    // }
+    // .table__img{
+    //     width: 100px;
+    //     height: 100px;
+    //     object-fit: contain;
+    // }
+    // .el-form-item {
+    //     position: relative;
+    // }
+    // .el-dialog {
+    //     margin: 20px auto;
+    // }
+    // .el-form-item__content {
+    //     margin-bottom: 15px;
+    // }
+    // .el-col-24 {
+    //     margin-bottom: 0;
+    // }
+
 </style>

@@ -38,7 +38,7 @@
             </template>
         </el-table-column>
     </el-table>
-    <el-dialog v-model="dialogVisible"  title="Yangi yo'nalish" width="100%">
+    <el-dialog class="ques" v-model="dialogVisible"  title="Yangi yo'nalish" width="100%">
         <el-form :model="form" ref="validate">
             <el-row :gutter="20">
                 <el-col :span="12">
@@ -65,11 +65,11 @@
                                     :auto-upload="true"
                                 >
                                     <el-button type="primary">Click to upload</el-button>
-                                    <!-- <template #tip>
-                                    <div class="el-upload__tip">
-                                        jpg/png files with a size less than 500KB.
+                                    <template #tip>
+                                    <div v-if="toggle" class="el-upload__tip">
+                                        {{form.poster}}
                                     </div>
-                                    </template> -->
+                                    </template>
                                 </el-upload>
 
                             </el-form-item>
@@ -176,13 +176,6 @@
             clear(){
                 this.dialogVisible = true, 
                 this.toggle = false
-                this.form={}
-                this.form.desc='', 
-                this.form.advice= '', 
-                this.form.poster='', 
-                this.form.kind='', 
-                this.form.slogan='', 
-                this.form.text=''
             },
             handleRemove(file){
                 this.del(file)
@@ -227,6 +220,16 @@
                             this.form.poster = this.img[0].response
                             this.dialogVisible = false
                             this.department(this.form)
+                            this.form.slogan= ''
+                            this.form.title= ''
+                            this.name= ''
+                            this.form.kind= ''
+                            this.form.price= '0'
+                            this.form.desc= ''
+                            this.form.advice= ''
+                            this.form.text= ''
+                            this.form.poster= ''
+                            this.img = []
                         }
                     }else{
                         this.dialogVisible = true
@@ -249,7 +252,16 @@
 </script>
 
 <style lang="scss">
-    .el-dialog {
-        margin:0;
-    }
+    // .el-dialog {
+    //     margin:0;
+    // }
+    // .el-dialog__footer {
+    //     margin-top: 90px;
+    // }
+    // .el-col-24 {
+    //     margin-bottom: unset;
+    // }
+    // .el-table .el-table__cell {
+    //     padding: 0;
+    // }
 </style>

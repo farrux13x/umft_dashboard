@@ -2,12 +2,12 @@
     <aside class="aside">
         <img src="@/assets/logo.png" alt="" class="aside__logo">
         <div class="aside__btns">
-            <span @click="toggle = 0" :class="`${toggle == 0 ? 'active' : ''}`">
+            <span @click="one" :class="`${toggle == 0 ? 'active' : ''}`">
                 <el-icon>
                     <house />
                 </el-icon>
             </span>
-            <span @click="toggle = 1" :class="`${toggle == 1 ? 'active' : ''}`">
+            <span @click="zero" :class="`${toggle == 1 ? 'active' : ''}`">
                 <el-icon><Message /></el-icon>
             </span>
         </div>
@@ -50,7 +50,7 @@
             </router-link>
         </div>
         <div :class="`aside__links ${toggle == 1 ? 'active' : ''}`">
-            <router-link to="/">
+            <router-link to="/chat">
                 <el-icon><ChatSquare /></el-icon>
                 Xabarlar
             </router-link>
@@ -63,10 +63,24 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
-        data: () => ({
-            toggle: 0
-        })
+        // data: () => ({
+        //     toggle: 0
+        // }),
+        computed:{
+            ...mapGetters([
+                'toggle'
+            ])
+        },
+        methods:{
+            one(){
+                this.$store.dispatch('getToggle', 0)
+            },
+            zero(){
+                this.$store.dispatch('getToggle', 1)
+            }
+        }
     }
 </script>
 

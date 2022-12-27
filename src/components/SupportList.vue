@@ -60,19 +60,19 @@ export default {
 </script>
 
 <style lang="scss">
-.el-table__cell:last-child{
-    .cell {
-        display: flex;
-        justify-content: center;
-    }
-}
-.el-dialog {
-    margin: 25px auto;
-}
-.el-dialog__footer {
-    margin-top: unset;
-}
-.wrapper .el-table .el-button{
-    width: unset;
-}
+// .el-table__cell:last-child{
+//     .cell {
+//         display: flex;
+//         justify-content: center;
+//     }
+// }
+// .el-dialog {
+//     margin: 25px auto;
+// }
+// .el-dialog__footer {
+//     margin-top: unset;
+// }
+// .wrapper .el-table .el-button{
+//     width: unset;
+// }
 </style>

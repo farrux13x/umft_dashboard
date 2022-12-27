@@ -2,7 +2,9 @@ import axios from "axios"
 
 const setting = {
     state:()=>({
-        settings:[],
+        settings:{
+            settings:[{}]
+        },
         countSetting:2
     }),
     getters:{

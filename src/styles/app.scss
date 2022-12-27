@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #F2F2F2;
+}
+.el-container {
+    height: calc(100vh - 125px);
+    .el-main {
+        --el-main-padding: 0px;
+    }
+    .el-aside{
+        border-right: 5px solid #c0c0c3;
+    }
+    .el-badge__content {
+        border-width: 0px;
+    }
+    .el-badge__content.is-fixed::selection{
+        background: #7352FF;
+    }
+    .el-badge {
+        width: 100%;
+    }
+    .el-badge__content.is-fixed {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-family: 'Mulish';
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 18px;
+        text-align: center;
+        letter-spacing: 0.777778px;
+        color: #FFFFFF;
+        background: #7352FF;
+        padding: 0px 5px;
+        border-radius: 50%;
+    }
+}
+
+.false{
+    .message{
+        background-color: #22252f;
+        .el-button {
+            background-color: #22252f;
+        }
+        &__table{
+            background-color: #2b2e3b;
+            height: 100%;
+            input{
+                color: white;
+                background-color: #2b2e3b;
+            }
+            input::placeholder{
+                color: white;
+            }
+            
+        }
+        &__search{
+            background-color: #2b2e3b;
+        }
+        &__title{
+            color: white;
+        }
+        &__header{
+            border-bottom: 1px solid #818284;
+        }
+        &__left{
+            color: white;
+            background: #4f515a;
+        }
+        &__right{
+            background: #484a52;
+            color: white;
+        }
+        &__footer{
+            background: #323337;
+        }
+        input{
+            color: white;
+            background: #323337;
+        }
+        input::placeholder{
+            color: white;
+        }
+    }
+    .user{
+        &__name{
+            color: white;
+        }
+    }
+}
+.message{
+        display: flex;
+        padding: 20px;
+        height: 100%;
+        flex-direction: column;
+        background-color: white;
+        &__header{
+            display: flex;
+            margin-bottom: 10px;
+            justify-content: space-between;
+            border-bottom: 1px solid #ECECEC;
+            .user__name,.user__time{
+                cursor: default;
+            }
+        }
+        &__chat{
+            display: flex;
+            overflow: scroll;
+            padding-right: 2px;
+            flex-direction: column;
+            width: 100%;
+            img{
+                border-radius: 10px;
+            }
+        }
+        &__chat::-webkit-scrollbar {
+            width: 5px;
+        }
+        &__chat::-webkit-scrollbar-track {
+            border-radius: 100px;
+            box-shadow: unset;
+        }
+        &__chat::-webkit-scrollbar-thumb {
+            border-radius: 100px;
+            border-width: 0;
+            background-color: rgb(202, 204, 206);
+        }
+        &__left{
+            margin-bottom: 5px;
+            font-family: 'Mulish';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.5px;
+            color: #697E8D;
+            padding: 12px 16px;
+            display: inline-block;
+            border-radius: 22px;
+            border-bottom-left-radius: 0;            
+            background: #F1F0F6;
+            margin-right: auto;
+        }
+        &__left div::selection,
+        &__right div::selection {
+            background: #7352FF;
+            color:#F2F2F2;
+        }
+        &__right{
+            margin-bottom: 5px;
+            font-family: 'Mulish';
+            font-weight: 400;
+            margin-left: auto;
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.5px;
+            color: #697E8D;
+            border-radius: 22px;
+            border-bottom-right-radius: 0;
+            padding: 12px 16px;
+            display: inline-block;
+            padding: 12px 16px;
+            background: #D8D8D8;
+        }
+        &__footer{
+            margin-top: auto;
+            padding: 6px 7px;
+            padding-left: 16px;
+            background: #D8D8D8;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            input{
+                font-family: 'Mulish';
+                border-width: 0;
+                width: 100%;
+                font-weight: 400;
+                font-size: 16px;
+                color:#697E8D;
+                background: #D8D8D8;
+            }
+            input::selection{
+                background: #7352FF;
+                color:white;
+            }
+            input:focus-visible {
+                outline: 0;
+            }
+            button{
+                cursor: pointer;
+                font-family: 'Mulish';
+                font-weight: 400;
+                font-size: 14px;
+                color: white;
+                line-height: 22px;
+                letter-spacing: 0.5px;
+                border-width: 0;
+                margin-left: 10px;
+                background: #7352FF;
+                border-radius: 100px;
+                display: flex;
+                align-items: center;
+                padding: 10px 41px;
+            }
+            button:hover{
+                background: darken(#7352FF,5%);
+            }
+            button::selection{
+                background: #7352FF;
+            }
+        }
+        &__table{
+            padding: 20px;
+        }
+        &__title{
+            font-family: 'Mulish';
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 23px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #697E8D;
+        }
+        &__title::selection {
+            background: #7352FF;
+            color:#F2F2F2;
+        }
+        &__search{
+            margin-top: 15px;
+            margin-bottom: 20px;
+            padding: 13px 7px;
+            padding-left: 16px;
+            display: flex;
+            background: #FFFFFF;
+            border: 1px solid #ECECEC;
+            border-radius: 21px;
+            justify-content: space-between;
+            color: #C8C8C9;
+            ::placeholder{
+                color: #C8C8C9;
+            }
+            input{
+                font-family: 'Mulish';
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 15px;
+                letter-spacing: 0.75px;
+                color: #C8C8C9;
+                border-width: 0;
+                width: 100%;
+                background: #FFFFFF;
+            }
+            input::selection{
+                background: #7352FF;
+                color:white;
+            }
+            input:focus-visible {
+                outline: 0;
+            }
+            .el-icon{
+                color: #C8C8C9;
+                margin-right: 10px;
+            }
+        }
+    }
+    .user{
+        margin: 2px 0;
+        border-bottom: 1px solid #818284;
+        &__name::selection, 
+        &__data::selection, 
+        &__message::selection, 
+        &__time::selection {
+            background: #7352FF;
+            color:#F2F2F2;
+        }
+        .item{
+            cursor: pointer;
+        }
+        &__name{
+            font-family: 'Mulish';
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 20px;
+            letter-spacing: 0.888889px;
+            color: #252726;
+        }
+        &__time{
+            margin: 8px 0;
+            font-family: 'Mulish';
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #818284;
+        }
+        &__data{
+            font-family: 'Mulish';
+            font-weight: 400;
+            line-height: 24px;
+            text-align: right;
+            font-size: 11px;
+            color: #818284;
+        }
+        &__message{
+            margin: 4px 0;
+            font-family: 'Mulish';
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: 0.777778px;
+            color: #697E8D;
+        }
+    }
+

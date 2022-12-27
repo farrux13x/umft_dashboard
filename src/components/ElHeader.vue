@@ -3,9 +3,9 @@
         <el-container>
             <h2>Hayrli kech Adminbek</h2>
             <el-input class="ml-a" v-model="search" placeholder="Qidiruv" clearable />
-            <el-button class="ml-1">
+            <!-- <el-button class="ml-1">
                 <el-icon><bell/></el-icon>
-            </el-button>
+            </el-button> -->
         </el-container>
     </header>
 </template>
