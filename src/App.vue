@@ -14,6 +14,7 @@ export default{
 <style lang="scss">
 @import './styles/reset.scss';
 @import './styles/grid.scss';
+// @import './styles/app.scss';
 @import './styles/main.scss';
 @import './styles/lib/class.scss';
     .ql-toolbar.ql-snow {
@@ -80,4 +81,33 @@ export default{
                 top: 100%;
         }
     }
+    .el-container {
+    .el-main {
+        --el-main-padding: 0px;
+    }
+    .el-badge__content {
+        border-width: 0px;
+    }
+    .el-badge__content.is-fixed::selection{
+        background: #7352FF;
+    }
+    .el-badge {
+        width: 100%;
+        .el-badge__content.is-fixed {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-family: 'Mulish';
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 18px;
+            text-align: center;
+            letter-spacing: 0.777778px;
+            color: #FFFFFF;
+            background: #7352FF;
+            padding: 0px 5px;
+            border-radius: 50%;
+        }
+    }
+}
 </style>
