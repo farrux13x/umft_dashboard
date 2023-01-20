@@ -62,14 +62,14 @@ const user = {
     actions: {
         apiChat(context, payload) {
             axios.get(`${context.getters.url}/chat/chat/${payload}`)
-                .then(res => {
-                    let {
-                        chat,
-                        other
-                    } = res.data
-                    context.commit('setChat', chat)
-                    context.commit('setOther', other)
-                })
+            .then(res => {
+                let {
+                    chat,
+                    other
+                } = res.data
+                context.commit('setChat', chat)
+                context.commit('setOther', other)
+            })
         },
         apiResMessage(context, payload) {
             axios.post(`${context.getters.url}/chat/response`, payload)

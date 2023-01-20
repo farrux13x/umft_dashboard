@@ -49,14 +49,14 @@
       },
       created(){
         this.socket = io(this.url)
-        this.socket.once('chatMessage', (message) =>{
+        this.socket.on('chatMessage', (message) =>{
           if(message._id == this.$route.params.id){
             let question = message.messages.pop()
             this.socketChatMessage(question)
             // this.socket.close()
           }
         })
-        this.socket.once('message', (message) => {
+        this.socket.on('message', (message) => {
           console.log(message)
           // if(!this.$store.getters.active){
             if(message.chat._id == this.$route.params.id){

@@ -22,6 +22,7 @@ const chat = {
             state.user = payload
         },
         socketMutation(state, payload) {
+            console.log('home')
             payload.msgCount = payload.messages.filter(msg => {
                 if (msg.viewing == 0) {
                     return true
